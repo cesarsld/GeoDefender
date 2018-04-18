@@ -5,6 +5,8 @@ using UnityEngine;
 public class LaserBullet : MonoBehaviour {
     [SerializeField]
     private float bulletSpeed = 10f;
+    [SerializeField]
+    private int bulletDamage = 15;
 	// Use this for initialization
 	void Start () {
 		
@@ -31,4 +33,10 @@ public class LaserBullet : MonoBehaviour {
             Destroy(gameObject);
         }
     }
+
+    public int GetDamage()
+    {
+        return bulletDamage;
+    }
+
 }

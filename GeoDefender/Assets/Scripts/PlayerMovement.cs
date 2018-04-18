@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour {
 
     private float rotationSpeed = 90f;
 
-    private float dampFactor = 2f;
+    private float dampFactor = 1.5f;
 
     private Vector3 veloctyVector;
     private bool inputReceived;
@@ -30,24 +30,24 @@ public class PlayerMovement : MonoBehaviour {
 
 
     private void UpdateRoration()
-    { 
+    {
+        float inputValue = Input.GetAxis("Horizontal");
+        if (inputValue == 0) return;
         Quaternion rot = transform.rotation;
         float z = rot.eulerAngles.z;
-        float inputValue = Input.GetAxis("Horizontal");
         z -= inputValue * rotationSpeed * Time.deltaTime;
         rot = Quaternion.Euler(0, 0, z);
         transform.rotation = rot;
-
-        if (inputValue != 0) inputReceived = true;
     }
 
     private void UpdateVelocity()
     {
         float inputValue = Input.GetAxis("Vertical");
+        if (inputValue != 0) inputReceived = true;
+        else return;
         Vector3 velocity = new Vector3(0, inputValue * movementSpeed * Time.deltaTime, 0);
         velocity = transform.rotation * velocity;
         veloctyVector += velocity;
-        if (inputValue != 0) inputReceived = true;
     }
 
     private void UpdateShipPosition()
@@ -64,8 +64,11 @@ public class PlayerMovement : MonoBehaviour {
     {
         if (!inputReceived)
         {
-            //veloctyVector -= veloctyVector * (dampFactor * Time.deltaTime);
-            if (veloctyVector.magnitude == 0) return;
+            if (veloctyVector.magnitude <= 0.01f)
+            {
+                veloctyVector = Vector3.zero;
+                return;
+            }
             float divider = dampFactor / veloctyVector.magnitude;
             veloctyVector -= new Vector3(veloctyVector.x, veloctyVector.y, veloctyVector.z) * divider * Time.deltaTime;
             
