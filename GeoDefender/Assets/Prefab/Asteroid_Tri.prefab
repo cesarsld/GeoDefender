@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4044749004897472}
   - component: {fileID: 212877371866709484}
+  - component: {fileID: 114123251418358302}
   - component: {fileID: 114593082229693418}
   - component: {fileID: 114052539073616986}
   - component: {fileID: 60878365402319672}
@@ -38,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1863299600600290}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -11.440779, y: -3.781963, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -102,11 +103,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2a38046cad94214cb2ec9b452c1fb51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
   spriteArray:
   - {fileID: 21300000, guid: def722b96166ef944a475bcfd2b778d7, type: 3}
   - {fileID: 21300000, guid: 472edac664336794b9f38eb367e1c801, type: 3}
   - {fileID: 21300000, guid: 0ce57cb29732c0d45a14597c5a74145e, type: 3}
+  - {fileID: 21300000, guid: db274c33c8009d7418877e010e53a59d, type: 3}
   asteroidBluePrint: {fileID: 1863299600600290}
+--- !u!114 &114123251418358302
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1863299600600290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f6d3c6e4250e84192f5b34ce9e71bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _glowColor: {r: 1, g: 0.9294118, b: 0, a: 1}
+  _glowBrightness: 1.62
+  _outlineWidth: 1
+  _alphaThreshold: 0.13
+  _drawOutside: 0
+  _enableInstancing: 0
 --- !u!114 &114593082229693418
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -132,7 +152,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -153,7 +173,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: def722b96166ef944a475bcfd2b778d7, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.93103445, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

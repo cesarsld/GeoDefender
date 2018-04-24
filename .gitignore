@@ -50,3 +50,9 @@ Temporary Items
 [Tt]emp
 .vs
 DevBuild_[0-9].app
+GeoDefender/Assets/VolumetricLines
+windowsBuild
+WebBuild
+.app
+GeoDefender/MacBuilds.app
+*.zip
