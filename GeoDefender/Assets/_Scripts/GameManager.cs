@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
 
     [SerializeField]
     private GameObject[] asteroidArray;
@@ -35,8 +36,9 @@ public class GameManager : MonoBehaviour {
 
 
     // Use this for initialization
-    void Start () {
-        wave = 8;
+    void Start()
+    {
+        wave = 0;
         gameRunning = true;
         foreach (GameObject powerUp in powerUpArray)
         {
@@ -47,9 +49,10 @@ public class GameManager : MonoBehaviour {
         powerUpOnField = false;
         Invoke("SpawnNewWave", 3f);
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
         if (gameRunning)
         {
             SpawnPowerUp();
@@ -65,13 +68,13 @@ public class GameManager : MonoBehaviour {
                 Time.timeScale = 1f;
             }
         }
-	}
+    }
 
     private Vector3 GenerateRandomSpawnPoint()
     {
-        int mod1 = -1 ^ Random.Range(0, 1);
-        int mod2 = -1 ^ Random.Range(0, 1);
-        Vector3 returnVector = new Vector3(Random.Range(2f, 15f) * mod1, Random.Range(2f, 9f) * mod2, 0f);
+        int mod1 = Random.Range(0, 2) * 2 - 1;
+        int mod2 = Random.Range(0, 2) * 2 - 1;
+        Vector3 returnVector = new Vector3(Random.Range(3f, 14f) * mod1, Random.Range(3f, 9f) * mod2, 0f);
         return returnVector;
     }
 
@@ -92,6 +95,7 @@ public class GameManager : MonoBehaviour {
             }
         }
     }
+
 
     public void PowerUpConsumed()
     {
